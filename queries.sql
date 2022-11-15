@@ -104,6 +104,30 @@ select 10 / NULLIF(0, 0);
 
 select COALESCE(10 / NULLIF(0,0),0)
 
+--TimeStamps and Dates
+
+select NOW();
+
+select NOW()::DATE;
+
+select NOW()::TIME;
+
+select NOW() - INTERVAL '1 YEAR';
+
+select NOW() - INTERVAL '2 MONTH';
+
+select NOW() - INTERVAL '3 WEEK';
+
+select NOW() - INTERVAL '1 DAY';
+
+select NOW() + INTERVAL '1 YEAR';
+
+select NOW() + INTERVAL '2 MONTH';
+
+select NOW() + INTERVAL '3 WEEK';
+
+select NOW() + INTERVAL '1 DAY';
+
 
 
 
