@@ -87,6 +87,22 @@ select COALESCE(Null);
 
 select COALESCE(email,'Email not provided') from person;
 
+--NULLIF function
+--If first_argument = second_argument result will be NULL, otherwise result will be first_argument
+
+select 10 / 0;
+
+select NULLIF(10,10);
+
+select NULLIF(10, 19);
+
+select NULLIF('Salom','Salom1');
+
+select 10 / NULL;
+
+select 10 / NULLIF(0, 0);
+
+select COALESCE(10 / NULLIF(0,0),0)
 
 
 
