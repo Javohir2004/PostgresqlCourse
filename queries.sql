@@ -83,6 +83,10 @@ select * from person;
 
 select email from person;
 
+select COALESCE(Null);
+
+select COALESCE(email,'Email not provided') from person;
+
 
 
 
