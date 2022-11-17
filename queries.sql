@@ -204,6 +204,33 @@ Alter Table person
 Add Unique (email);
 
 
+--Check Constraints
+
+select * from person;
+
+Insert Into person (first_name,last_name,email,gender,date_of_birth,country_of_birth) values
+('Fernando','Wren','hello.com','Male',DATE '2022-03-11','Albania');
+
+select distinct gender from person;
+
+Alter Table person
+Add Constraint gender_constraint CHECK (gender = 'Female' or gender = 'Male');
+
+Alter Table person
+Drop Constraint gender_constraint;
+
+Delete From person
+Where gender <> 'Male' And gender <> 'Female'
+
+--Delete Records
+Delete From person;
+
+Delete From person
+Where id = 2011
+
+Delete From person
+Where gender = 'Female' and country_of_birth = 'England';
+
 
 
 
