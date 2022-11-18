@@ -244,6 +244,39 @@ Where gender = 'Male';
 
 Delete From person;
 
+--Update Records
+
+select * from person Where id = 3010;
+
+Update person
+Set email = 'ommar@gmail.com'
+Where id = 3012;
+
+Update person
+Set first_name = 'Omar',last_name = 'Montana',email = 'ommar.montana@hotmail.com'
+Where id = 3010;
+
+--On Conflict Do Nothing
+select * from person;
+
+select * from person
+where id = 3013;
+
+Insert into person (id,first_name,last_name,gender,email,date_of_birth,country_of_birth)
+Values (3013,'Raffaello','Gilhouley','Male','rgilhouley3@netscape.com',DATE '2021-12-24','China');
+
+--Email or id because these columns have a constraint
+Insert into person (id,first_name,last_name,gender,email,date_of_birth,country_of_birth)
+Values (3013,'Raffaello','Gilhouley','Male','rgilhouley3@netscape.com',DATE '2021-12-24','China')
+On Conflict (email /* or id*/) Do Nothing;
+
+--Upsert
+Insert into person (id,first_name,last_name,gender,email,date_of_birth,country_of_birth)
+Values (3013,'Raffaello','Gilhouley','Male','rgilhouley3@netscape.com',DATE '2021-12-24','China')
+On Conflict (email) Do Nothing;
+
+select * from person Where id = 3013;
+
 
 
 
