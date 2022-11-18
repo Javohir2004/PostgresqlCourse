@@ -231,6 +231,19 @@ Where id = 2011
 Delete From person
 Where gender = 'Female' and country_of_birth = 'England';
 
+select * from person;
+
+Delete From person
+Where gender = 'Male' and country_of_birth = 'Indonesia' and id = 2022;
+
+select * From person
+Where gender = 'Female' and country_of_birth = 'Indonesia' and id = 2022;
+
+Delete From person
+Where gender = 'Male';
+
+Delete From person;
+
 
 
 
