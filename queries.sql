@@ -385,3 +385,34 @@ Select * from person
 Left Join car on car.id = person.car_id;
 
 \copy (Select * From person left join car on car.id = person.car_id) To 'C:\Users\javoh\Desktop\results.csv' delimiter ',' csv header;
+
+--Serial & Sequences
+Select * from person_id_seq;
+
+select * from person;
+
+select nextval('person_id_seq'::regclass);
+select nextval('person_id_seq'::regclass);
+select nextval('person_id_seq'::regclass);
+
+select * from person;
+Select * from person_id_seq;
+
+
+insert into person (first_name, last_name, gender, email, date_of_birth, country_of_birth)
+values ('John','Matuscheck','Male','john@feedburner.com','1989-02-28','France');
+
+select * from person;
+
+
+Alter Sequence person_id_seq Restart With 10;
+
+select * from person_id_seq;
+
+Alter Sequence person_id_seq Restart With 9;
+
+select * from person_id_seq;
+
+select nextval('person_id_seq'::regclass)
+select nextval('person_id_seq'::regclass)
+select nextval('person_id_seq'::regclass)
