@@ -416,3 +416,65 @@ select * from person_id_seq;
 select nextval('person_id_seq'::regclass)
 select nextval('person_id_seq'::regclass)
 select nextval('person_id_seq'::regclass)
+
+--Extensions
+select * from pg_available_extensions;
+
+--Universally unique identifier
+select * from pg_available_extensions
+order by name;
+
+Create Extension If Not Exists "uuid-ossp";
+
+select uuid_generate_v4();
+
+
+Drop Table person;
+Drop Table car;
+
+
+create table car (
+    car_uid UUID NOT NULL PRIMARY KEY,
+    make VARCHAR(100) NOT NULL,
+    model VARCHAR(100) NOT NULL,
+    price NUMERIC(19, 2) NOT NULL CHECK (price > 0)
+);
+
+create table person (
+    person_uid UUID NOT NULL PRIMARY KEY,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
+    gender VARCHAR(7) NOT NULL,
+    email VARCHAR(100),
+    date_of_birth DATE NOT NULL,
+    country_of_birth VARCHAR(50) NOT NULL,
+    car_uid UUID REFERENCES car (car_uid),
+    UNIQUE(car_uid),
+    UNIQUE(email)
+);
+
+--Insert into person
+insert into person (person_uid,first_name, last_name, gender, email, date_of_birth, country_of_birth)
+values (uuid_generate_v4(),'Fernanda','Beardon','Female','fernandab@is.gd', '1953-10-28', 'Comoros');
+
+insert into person (person_uid,first_name, last_name, gender, email, date_of_birth, country_of_birth)
+values (uuid_generate_v4(),'Omar','Colmore','Male',null, '1921-04-03', 'Finland');
+
+insert into person (person_uid,first_name, last_name, gender, email, date_of_birth, country_of_birth)
+values (uuid_generate_v4(),'Adriana','Matuschek','Female','amatuschek2@feedburner.com', '1965-02-28', 'Cameroon');
+
+--insert into car
+insert into car (car_uid,make,model,price) values (uuid_generate_v4(),'Land Rover', 'Sterling', '87665.38');
+insert into car (car_uid,make,model,price) values (uuid_generate_v4(),'GMC', 'Acadia', '17662.69');
+
+select * from person;
+select * from car;
+
+Update person
+Set car_uid = '9ebf6417-5ecd-4d53-ac6c-39c141085d75'
+where person_uid = 'dc4f3296-40ff-4172-9ecd-ec959d98dd9b';
+
+Update person
+Set car_uid = '5c925b79-c991-45c9-8a0f-705dba355017'
+where person_uid = 'd8228034-086b-433a-8a3f-0d309e6bc493';
+
