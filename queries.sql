@@ -324,40 +324,64 @@ Where id = 1;
 
 
 
+--Updating Foreign Keys Columns
+select * from person;
 
+select * from car;
 
+Update person
+Set car_id = 3
+Where id = 1;
 
+--Inner Joins
+Select * From person;
 
+Select * from car;
 
+select * from person
+join car on person.car_id = car.id;
 
+select person.first_name,car.make,car.model,car.price from person
+join car on person.car_id = car.id;
 
+--Left Joins
+select * from person;
+select * from car;
 
+select * from person
+left join car on car.id = person.car_id;
 
+Select * from person 
+left join car on car.id = person.car_id;
 
+--Deleting Records With Foreign Keys
+select * from person;
+select * from car;
+Insert Into car (id,make,model,price) values (13, 'Mazda', 'RX-8','51272.48');
+Insert Into person (id, first_name, last_name, gender, email, date_of_birth, country_of_birth)
+values (9000,'John','Smith','Male',null, '1921-04-03', 'Finland');
 
+Select * From person
+Where id = 9000;
 
+Select * from car
+Where id = 13;
 
+Update person
+Set car_id = 13
+where id = 9000;
 
+Delete From car
+Where id = 13;
 
+Delete From person
+Where id = 9000;
 
+Delete From car
+Where id = 13;
 
+--Exporting Query Results to CSV
+Select * from person
+Left Join car on car.id = person.car_id;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+\copy (Select * From person left join car on car.id = person.car_id) To 'C:\Users\javoh\Desktop\results.csv' delimiter ',' csv header;
