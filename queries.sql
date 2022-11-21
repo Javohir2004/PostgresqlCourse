@@ -313,6 +313,15 @@ insert into car (make,model,price) values ('GMC','Acadia','17662.69');
 select * from person;
 select * from car;
 
+--Updating Foreign Keys Columns
+select * from person;
+
+select * from car;
+
+Update person
+Set car_id = 3
+Where id = 1;
+
 
 
 
