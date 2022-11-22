@@ -478,3 +478,9 @@ Update person
 Set car_uid = '5c925b79-c991-45c9-8a0f-705dba355017'
 where person_uid = 'd8228034-086b-433a-8a3f-0d309e6bc493';
 
+select * from person
+join car on person.car_uid = car.car_uid;
+
+select * from person
+left join car using (car_uid)
+where car.* is null;
